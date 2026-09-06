@@ -1,0 +1,9 @@
+# Optional voice pipeline dependencies.
+# Install these in a dedicated TTS environment, not in the ComfyUI environment.
+requests
+fastapi
+uvicorn
+pydantic
+soundfile
+qwen-tts
+# Install a PyTorch build appropriate for your GPU/CUDA separately.

@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "scope": "SFW visual novel event CG prompt blocks",
+  "quality_prefix": "masterpiece, best quality, newest, absurdres, highres, safe",
+  "event_order": ["quality", "event/action", "shot/camera", "blocking", "identity/costume", "environment contact", "lighting", "rendering finish"],
+  "negative_base": "worst quality, low quality, lowres, jpeg artifacts, text, watermark, signature, logo, multiple views, character sheet, collage, split screen, duplicate, cloned face, extra person, bad anatomy, malformed hands, fused fingers, extra fingers, extra limbs, disconnected limbs, floating tail, disconnected tail, extra tail, missing tail, extra horns, missing horns, wrong hair color, wrong costume, inconsistent lighting, flat staging, empty background",
+  "single_character_rules": ["Use one identity LoRA by default", "Give gaze, shoulders, hands, body, feet, tail and one prop distinct jobs", "Write at least one physical contact with the environment", "Specify key, fill/bounce and separation light"],
+  "multi_character_skeleton": "EVENT INVOLVING BOTH CHARACTERS, two characters only, SHOT AND CAMERA, left character: IDENTITY A, ACTION A, GAZE A, CONTACT A, right character: IDENTITY B, ACTION B, GAZE B, CONTACT B, SHARED PROP OR CONTACT, DEPTH LAYERS, GLOBAL LIGHTING, FINISH",
+  "multi_character_rules": ["Use regional conditioning or separate masks when identity matters", "Apply one identity LoRA inside each character region", "Use a low-strength global pass to unify lighting", "Inpaint faces, horns, clothes, hands, feet and tail connections separately"],
+  "protected_character_rule": "Laundry Dragonmaid / 小蓝 is SFW, wholesome, non-romantic and fully covered only."
+}

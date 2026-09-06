@@ -1,0 +1,460 @@
+{
+  "id": "CG2 管家：只写动作神态",
+  "revision": 1,
+  "last_node_id": 8,
+  "last_link_id": 18,
+  "nodes": [
+    {
+      "id": 1,
+      "type": "CheckpointLoaderSimple",
+      "pos": [
+        0,
+        0
+      ],
+      "size": [
+        320,
+        120
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "slot_index": 0,
+          "links": [
+            1
+          ]
+        },
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "slot_index": 1,
+          "links": [
+            2
+          ]
+        },
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "slot_index": 2,
+          "links": [
+            8
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CheckpointLoaderSimple"
+      },
+      "widgets_values": [
+        "sdxl\\waiIllustriousSDXL_v150.safetensors"
+      ],
+      "title": "底模：WAI Illustrious SDXL v1.5"
+    },
+    {
+      "id": 2,
+      "type": "LoraLoader",
+      "pos": [
+        380,
+        0
+      ],
+      "size": [
+        320,
+        120
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 1
+        },
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 2
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "slot_index": 0,
+          "links": [
+            3
+          ]
+        },
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "slot_index": 1,
+          "links": [
+            4,
+            5
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoraLoader"
+      },
+      "widgets_values": [
+        "dragonmaid_historical_recommended_v1\\01_管家_Hasuki-pilot20-历史推荐-r32.safetensors",
+        0.72,
+        0.64
+      ],
+      "title": "角色 LoRA（已预设，通常别改）"
+    },
+    {
+      "id": 3,
+      "type": "CLIPTextEncode",
+      "pos": [
+        760,
+        -100
+      ],
+      "size": [
+        320,
+        120
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 4
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "slot_index": 0,
+          "links": [
+            6
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPTextEncode"
+      },
+      "widgets_values": [
+        "masterpiece, best quality, amazing quality, newest, full color finished anime visual novel character CG, consistent clean 2D anime style, soft pastel macaron palette, clean lineart, crisp cel shading, smooth skin shading, controlled highlights, low contrast warm tone, visual novel CG look, solo, 1girl, expressive acting, simple clean background, no detailed scene, character-focused composition, upper body or medium shot, clear face, correct horns, attached tail, costume fidelity, house dragonmaid, adult woman, glasses, long dark brown hair, black curved horns, black formal maid uniform, attached dark feathered dragon tail, 动作神态只写这里：整理卡组时抬眼看向镜头，眼镜后半闭眼吐槽，嘴角很轻地上扬，一只手按住卡盒，另一只手扶住托盘，尾巴自然绕到身后"
+      ],
+      "title": "正面提示词：角色身份 + 你写动作神态"
+    },
+    {
+      "id": 4,
+      "type": "CLIPTextEncode",
+      "pos": [
+        760,
+        100
+      ],
+      "size": [
+        320,
+        120
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 5
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "slot_index": 0,
+          "links": [
+            7
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPTextEncode"
+      },
+      "widgets_values": [
+        "detailed background, complex scenery, crowded room, multiple girls, 2girls, clone, duplicate person, independent dragon, full dragon, card frame, trading card border, readable text, caption, speech bubble, game UI, comic panels, collage, pasted sprite, empty room, tiny character, standing pose only, blank expression, generic smile, detached tail, floating tail, missing horns, wrong horn color, wrong hair color, bad hands, extra fingers, fused fingers, bad feet, extra limbs, broken legs, blurry face, lowres, jpeg artifacts, inconsistent style, painterly, oil painting, realistic, photorealistic, 3d render, western comic, pixel art, monochrome, sketch, rough draft, overexposed, oversaturated, muddy colors, glossy plastic skin, explicit sex, exposed genitalia, child sexualization"
+      ],
+      "title": "负面提示词：压制场景污染/多人/卡框/崩坏"
+    },
+    {
+      "id": 5,
+      "type": "EmptyLatentImage",
+      "pos": [
+        760,
+        300
+      ],
+      "size": [
+        320,
+        120
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "slot_index": 0,
+          "links": [
+            10
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "EmptyLatentImage"
+      },
+      "widgets_values": [
+        832,
+        1216,
+        4
+      ],
+      "title": "画布：默认竖图小样 batch 4"
+    },
+    {
+      "id": 6,
+      "type": "KSampler",
+      "pos": [
+        1160,
+        120
+      ],
+      "size": [
+        320,
+        120
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 3
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 6
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 7
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 10
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "slot_index": 0,
+          "links": [
+            16
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "KSampler"
+      },
+      "widgets_values": [
+        202608080601,
+        "randomize",
+        28,
+        5.0,
+        "dpmpp_2m",
+        "karras",
+        1.0
+      ],
+      "title": "采样器：先小样，不放大"
+    },
+    {
+      "id": 7,
+      "type": "VAEDecode",
+      "pos": [
+        1520,
+        120
+      ],
+      "size": [
+        320,
+        120
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 16
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 17
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "slot_index": 0,
+          "links": [
+            18
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAEDecode"
+      },
+      "widgets_values": [],
+      "title": "VAE 解码"
+    },
+    {
+      "id": 8,
+      "type": "SaveImage",
+      "pos": [
+        1840,
+        120
+      ],
+      "size": [
+        320,
+        120
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 18
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "Node name for S&R": "SaveImage"
+      },
+      "widgets_values": [
+        "dragonmaid_cg2/01_House_管家"
+      ],
+      "title": "保存：dragonmaid_cg2"
+    }
+  ],
+  "links": [
+    [
+      1,
+      1,
+      0,
+      2,
+      0,
+      "MODEL"
+    ],
+    [
+      2,
+      1,
+      1,
+      2,
+      1,
+      "CLIP"
+    ],
+    [
+      4,
+      2,
+      1,
+      3,
+      0,
+      "CLIP"
+    ],
+    [
+      5,
+      2,
+      1,
+      4,
+      0,
+      "CLIP"
+    ],
+    [
+      3,
+      2,
+      0,
+      6,
+      0,
+      "MODEL"
+    ],
+    [
+      6,
+      3,
+      0,
+      6,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      7,
+      4,
+      0,
+      6,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      10,
+      5,
+      0,
+      6,
+      3,
+      "LATENT"
+    ],
+    [
+      16,
+      6,
+      0,
+      7,
+      0,
+      "LATENT"
+    ],
+    [
+      17,
+      1,
+      2,
+      7,
+      1,
+      "VAE"
+    ],
+    [
+      18,
+      7,
+      0,
+      8,
+      0,
+      "IMAGE"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.86,
+      "offset": [
+        40,
+        80
+      ]
+    },
+    "frontendVersion": "1.25.0"
+  },
+  "version": 0.4
+}

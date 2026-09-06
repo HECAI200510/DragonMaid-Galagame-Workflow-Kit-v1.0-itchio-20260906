@@ -1,0 +1,89 @@
+{
+  "server": "http://127.0.0.1:8188",
+  "checkpoint": "sdxl\\waiIllustriousSDXL_v150.safetensors",
+  "lora": "dragonmaid_public_illustrious_v4\\02_Kitchen_dragonmaid_illuXL_v1.1.safetensors",
+  "output_root": "DragonMaid/Kitchen_Lottery_40_20260820",
+  "image_count": 40,
+  "submitted": [
+    {
+      "scene": 1,
+      "slug": "scene01_doorway_surprise",
+      "seed": 202608200101,
+      "batch_size": 4,
+      "prompt_id": "de890c85-182b-4580-adc5-ccfd37a642c7",
+      "node_errors": {}
+    },
+    {
+      "scene": 2,
+      "slug": "scene02_bowl_rescue",
+      "seed": 202608200201,
+      "batch_size": 4,
+      "prompt_id": "db862348-1d3c-4b55-8e4c-c49588f07cd9",
+      "node_errors": {}
+    },
+    {
+      "scene": 3,
+      "slug": "scene03_flour_burst",
+      "seed": 202608200301,
+      "batch_size": 4,
+      "prompt_id": "291f2c99-57e5-4f39-b6e2-479ae7ee4a24",
+      "node_errors": {}
+    },
+    {
+      "scene": 4,
+      "slug": "scene04_taste_test",
+      "seed": 202608200401,
+      "batch_size": 4,
+      "prompt_id": "c3043ed5-e19e-440c-b9f0-e881d097f234",
+      "node_errors": {}
+    },
+    {
+      "scene": 5,
+      "slug": "scene05_praise_overload",
+      "seed": 202608200501,
+      "batch_size": 4,
+      "prompt_id": "04ee2bb2-1d0c-412c-8372-7ce4e54f7a46",
+      "node_errors": {}
+    },
+    {
+      "scene": 6,
+      "slug": "scene06_secret_ingredient_challenge",
+      "seed": 202608200601,
+      "batch_size": 4,
+      "prompt_id": "16ec37d5-1521-44be-b1e6-ee28eefb5c5a",
+      "node_errors": {}
+    },
+    {
+      "scene": 7,
+      "slug": "scene07_oven_emergency",
+      "seed": 202608200701,
+      "batch_size": 4,
+      "prompt_id": "47651efe-2007-46ae-9ab9-838af543749b",
+      "node_errors": {}
+    },
+    {
+      "scene": 8,
+      "slug": "scene08_flour_on_cheek",
+      "seed": 202608200801,
+      "batch_size": 4,
+      "prompt_id": "a4c7360c-f1b1-4250-bd4e-4331875e6bfc",
+      "node_errors": {}
+    },
+    {
+      "scene": 9,
+      "slug": "scene09_share_the_pastry",
+      "seed": 202608200901,
+      "batch_size": 4,
+      "prompt_id": "c625a3f0-79bf-482c-be96-1363d24d7dfd",
+      "node_errors": {}
+    },
+    {
+      "scene": 10,
+      "slug": "scene10_hidden_scorecard",
+      "seed": 202608201001,
+      "batch_size": 4,
+      "prompt_id": "4b0d6e63-c6bc-4284-86b2-56d47e4532ed",
+      "node_errors": {}
+    }
+  ]
+}

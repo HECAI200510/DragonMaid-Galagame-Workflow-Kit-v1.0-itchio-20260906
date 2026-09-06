@@ -1,0 +1,102 @@
+{
+  "1": {
+    "class_type": "CheckpointLoaderSimple",
+    "inputs": {
+      "ckpt_name": "sdxl\\waiIllustriousSDXL_v150.safetensors"
+    }
+  },
+  "3": {
+    "class_type": "CLIPTextEncode",
+    "inputs": {
+      "text": "masterpiece, best quality, solo, kitchen dragonmaid, mature adult, long red hair, turquoise horns, brown and white long apron maid uniform, red tail, safe for work, fully clothed visual novel CG, standing three-quarter view, pure black seamless background, official-design faithful, coherent anatomy, complete connected tail, cinematic anime CG",
+      "clip": [
+        "2",
+        1
+      ]
+    }
+  },
+  "4": {
+    "class_type": "CLIPTextEncode",
+    "inputs": {
+      "text": "photorealistic, 3d, blurry, smooth gradient, multiple characters, duplicate, malformed anatomy, extra limbs, extra horns, extra tails, detached tail, wrong hair color, wrong tail color, text, watermark",
+      "clip": [
+        "2",
+        1
+      ]
+    }
+  },
+  "5": {
+    "class_type": "EmptyLatentImage",
+    "inputs": {
+      "width": 832,
+      "height": 1216,
+      "batch_size": 1
+    }
+  },
+  "6": {
+    "class_type": "KSampler",
+    "inputs": {
+      "model": [
+        "2",
+        0
+      ],
+      "seed": 202608300100,
+      "steps": 28,
+      "cfg": 4.8,
+      "sampler_name": "dpmpp_2m_sde",
+      "scheduler": "karras",
+      "positive": [
+        "3",
+        0
+      ],
+      "negative": [
+        "4",
+        0
+      ],
+      "latent_image": [
+        "5",
+        0
+      ],
+      "denoise": 1.0
+    }
+  },
+  "7": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "6",
+        0
+      ],
+      "vae": [
+        "1",
+        2
+      ]
+    }
+  },
+  "2": {
+    "class_type": "LoraLoader",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "clip": [
+        "1",
+        1
+      ],
+      "lora_name": "dragonmaid_public_illustrious_v4\\02_Kitchen_dragonmaid_illuXL_v1.1.safetensors",
+      "strength_model": 0.78,
+      "strength_clip": 0.72
+    }
+  },
+  "10": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "filename_prefix": "unity_rpg/cg/02_Kitchen_小红/01",
+      "images": [
+        "7",
+        0
+      ]
+    }
+  }
+}
